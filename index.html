@@ -220,4 +220,286 @@
   .rule.warn{border-left-color:var(--gold)}
   .rule.ban{border-left-color:var(--redstone)}
   .rule .tag2{
-    font-family:"Courier New",monospace
+    font-family:"Courier New",monospace;font-weight:900;font-size:.7rem;
+    padding:3px 7px;color:#fff;flex-shrink:0;text-transform:uppercase;
+  }
+  .allow .tag2{background:var(--grass)}
+  .warn .tag2{background:var(--gold);color:var(--ink)}
+  .ban .tag2{background:var(--redstone)}
+  .rule strong{display:block;font-family:"Courier New",monospace;text-transform:uppercase;margin-bottom:3px}
+  .rule p{font-size:.9rem;line-height:1.45}
+
+  /* commands */
+  .cmd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .cmd{
+    background:var(--ink);color:#fff;border:4px solid #000;padding:20px;
+    box-shadow:7px 7px 0 rgba(0,0,0,.28);
+    transition:transform .15s ease;
+  }
+  .cmd:hover{transform:translate(-3px,-3px)}
+  .cmd code{
+    font-family:"Courier New",monospace;font-weight:900;font-size:1.35rem;
+    color:var(--diamond);display:block;margin-bottom:8px;letter-spacing:1px;
+  }
+  .cmd p{font-family:"Trebuchet MS",sans-serif;font-size:.9rem;line-height:1.45;color:#d8d8d8}
+
+  /* owner warning band */
+  .owner-band{
+    background:var(--redstone);color:#fff;text-align:center;
+    border-top:5px solid #000;border-bottom:5px solid #000;
+    padding:34px 20px;
+  }
+  .owner-band h2{font-size:clamp(1.5rem,6vw,2.6rem);margin-bottom:10px;
+    text-shadow:3px 3px 0 rgba(0,0,0,.4)}
+  .owner-band p{max-width:680px;margin:0 auto;font-family:"Courier New",monospace;
+    font-weight:700;line-height:1.6}
+
+  /* start server steps */
+  .steps{counter-reset:s;max-width:720px;margin:0 auto;display:grid;gap:16px}
+  .step{
+    background:#fff;border:4px solid var(--ink);padding:18px 20px 18px 62px;position:relative;
+    box-shadow:6px 6px 0 rgba(0,0,0,.2);font-family:"Trebuchet MS",sans-serif;
+  }
+  .step::before{
+    counter-increment:s;content:counter(s);
+    position:absolute;left:14px;top:50%;transform:translateY(-50%);
+    width:34px;height:34px;background:var(--grass);color:#fff;
+    font-family:"Courier New",monospace;font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 0 var(--grass-dark);
+  }
+
+  /* join CTA final */
+  .final{
+    text-align:center;padding:80px 20px 120px;background:var(--ink);color:#fff;
+    border-top:5px solid #000;
+  }
+  .final h2{font-size:clamp(2rem,8vw,4rem);color:var(--grass);
+    text-shadow:4px 4px 0 rgba(0,0,0,.5);margin-bottom:16px}
+  .final p{font-family:"Courier New",monospace;font-weight:700;margin-bottom:28px;color:#cfcfcf}
+  .final .cta{margin-top:0}
+  footer{background:#000;color:#777;text-align:center;padding:22px;font-family:"Courier New",monospace;font-size:.8rem}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  .toast{
+    position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(30px);
+    background:var(--grass);color:#fff;font-family:"Courier New",monospace;font-weight:900;
+    padding:12px 22px;box-shadow:5px 5px 0 rgba(0,0,0,.4);opacity:0;pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;z-index:99;text-transform:uppercase;letter-spacing:1px;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* watermark bottom-right */
+  .watermark{
+    position:fixed;right:12px;bottom:60px;z-index:80;
+    background:rgba(28,21,14,.82);color:#fff;
+    font-family:"Courier New",monospace;font-weight:700;font-size:.72rem;
+    padding:6px 11px;letter-spacing:.5px;
+    box-shadow:3px 3px 0 rgba(0,0,0,.35);
+    border:2px solid #000;text-transform:uppercase;pointer-events:none;
+  }
+  .watermark span{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div id="sky"></div>
+<div id="clouds"></div>
+<div id="voxels"></div>
+
+<header>
+  <div class="logo"><div class="cube"></div> SlingerSMP</div>
+  <nav>
+    <a href="#join">Join</a>
+    <a href="#info">Info</a>
+    <a href="#rules">Rules</a>
+    <a href="#commands">Commands</a>
+    <a href="#start">Start Server</a>
+    <a href="#discord">Discord</a>
+    <a href="https://www.youtube.com/@Slinger400" target="_blank" rel="noopener">YouTube</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">⚔ COMPLETE SURVIVAL SMP ⚔</div>
+  <h1>SLINGER<span class="green">SMP</span></h1>
+  <div class="tag">A cutthroat, pure-vanilla survival world</div>
+  <div class="java-note">☕ <span>MINECRAFT JAVA EDITION ONLY</span> · No Bedrock</div>
+  <div class="cta">
+    <a href="#discord" class="btn diamond">JOIN THE DISCORD</a>
+    <a href="#join" class="btn gold">HOW TO JOIN</a>
+    <a href="#rules" class="btn red">READ THE RULES</a>
+  </div>
+
+  <div class="ipbox">
+    <span>JAVA IP:</span>
+    <code id="ip">slinger400.aternos.me</code>
+    <button class="copybtn" onclick="copyIP()">COPY</button>
+    <span style="color:var(--gold);font-family:'Courier New',monospace;font-weight:900">v1.26.2</span>
+  </div>
+</section>
+
+<div class="grass-strip"></div>
+
+<!-- SERVER INFO -->
+<section id="info">
+  <div class="wrap">
+    <h2 class="sec-title reveal">🌐 Server Information</h2>
+    <p class="sec-sub reveal">Everything you need to jump into the action.</p>
+    <div class="grid">
+      <div class="card reveal"><span class="ico">☕</span><h3>Java Only</h3><p>Connect with <strong>slinger400.aternos.me</strong>. Minecraft Java Edition exclusively — Bedrock won't work.</p></div>
+      <div class="card reveal"><span class="ico">🎮</span><h3>Version 1.26.2</h3><p>Make sure your client matches so you can log in without version mismatch errors.</p></div>
+      <div class="card reveal"><span class="ico">🌱</span><h3>Pure Vanilla</h3><p>No plugins, no mods, no shortcuts. Just raw survival Minecraft the way it was meant to be played.</p></div>
+      <div class="card reveal"><span class="ico">💥</span><h3>Complete Survival</h3><p>Full survival mode inspired by popular SMP networks. Steal, trap, and grief — survival is a full-contact sport here.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section id="rules" style="background:linear-gradient(180deg,#e9f6d6,#f4ecd8)">
+  <div class="wrap">
+    <h2 class="sec-title reveal">📜 Gameplay & Rules</h2>
+    <p class="sec-sub reveal">Complete survival. Cutthroat. Vanilla. Build at your own risk.</p>
+    <div class="rules-wrap">
+      <div class="rule allow reveal"><span class="tag2">Allowed</span><div><strong>Stealing</strong><p>Completely allowed. Secure your loot — nobody's coming to save it for you.</p></div></div>
+      <div class="rule allow reveal"><span class="tag2">Allowed</span><div><strong>Trapping</strong><p>Fair game. Watch your step out there, the ground isn't always what it looks like.</p></div></div>
+      <div class="rule allow reveal"><span class="tag2">Allowed</span><div><strong>Griefing</strong><p>Allowed — but do NOT grief the owner's base. If you do, you get killed and everything you own gets stolen.</p></div></div>
+      <div class="rule warn reveal"><span class="tag2">Rule</span><div><strong>Teaming</strong><p>Promoted! Squad up — but keep your team under 10 players. No mega-alliances.</p></div></div>
+      <div class="rule warn reveal"><span class="tag2">Respect</span><div><strong>Respect the Owner & Mods</strong><p>Swearing's fine, just don't make it a big deal. And absolutely never say the N word.</p></div></div>
+      <div class="rule ban reveal"><span class="tag2">Banned</span><div><strong>Cheating</strong><p>Strictly prohibited. No hacks, no X-Ray, no exploits of any kind.</p></div></div>
+      <div class="rule ban reveal"><span class="tag2">Banned</span><div><strong>Duping</strong><p>DO NOT DUPE. Zero tolerance.</p></div></div>
+      <div class="rule ban reveal"><span class="tag2">Banned</span><div><strong>Raiding/Nuking Spawn</strong><p>Do NOT raid or nuke spawn. Keep the spawn area safe for everyone — break this and you're gone.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDS -->
+<section id="commands">
+  <div class="wrap">
+    <h2 class="sec-title reveal">💻 Commands</h2>
+    <p class="sec-sub reveal">Handy commands to get around the world fast.</p>
+    <div class="cmd-grid">
+      <div class="cmd reveal"><code>/home</code><p>Teleport straight back to your set home base.</p></div>
+      <div class="cmd reveal"><code>/sethome</code><p>Set your current spot as your home before you go exploring.</p></div>
+      <div class="cmd reveal"><code>/tpa &lt;player&gt;</code><p>Request to teleport to another player. They have to accept.</p></div>
+      <div class="cmd reveal"><code>/tphere &lt;player&gt;</code><p>Ask another player to teleport to you. Great for teaming up.</p></div>
+      <div class="cmd reveal"><code>/tpaccept</code><p>Accept an incoming teleport request from someone.</p></div>
+      <div class="cmd reveal"><code>/spawn</code><p>Head back to the main spawn point of the server.</p></div>
+    </div>
+    <p class="sec-sub reveal" style="margin-top:26px;margin-bottom:0">…and more! Type <strong>/help</strong> in-game to see the full list.</p>
+  </div>
+</section>
+
+<!-- OWNER WARNING -->
+<section class="owner-band reveal" style="padding-top:44px;padding-bottom:44px">
+  <h2>⚠ DON'T GRIEF MY BASE ⚠</h2>
+  <p>Grief the owner's base and you will be hunted down, killed, and stripped of everything you own. You've been warned. Everything else out in the world? Fair game.</p>
+</section>
+
+<!-- START SERVER -->
+<section id="start">
+  <div class="wrap">
+    <h2 class="sec-title reveal">⚙️ Server Asleep? Wake It Up</h2>
+    <p class="sec-sub reveal">Free-hosted community server — it sleeps when empty. You don't need an admin to start it.</p>
+    <div class="steps">
+      <div class="step reveal">Head to the <strong>start-server</strong> channel in the Discord.</div>
+      <div class="step reveal">Click the official startup button or run the bot command.</div>
+      <div class="step reveal">Wait 2–3 minutes for the world to load.</div>
+      <div class="step reveal">Log in and enjoy the chaos!</div>
+    </div>
+    <div style="text-align:center;margin-top:34px" class="reveal">
+      <a href="#discord" class="btn gold">GO TO DISCORD TO START</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO JOIN -->
+<section id="join" style="background:linear-gradient(180deg,#f4ecd8,#e9f6d6)">
+  <div class="wrap" style="text-align:center">
+    <h2 class="sec-title reveal">🎮 How To Join</h2>
+    <p class="sec-sub reveal">Three steps and you're in.</p>
+    <div class="grid" style="max-width:820px;margin:0 auto">
+      <div class="card reveal"><span class="ico">1️⃣</span><h3>Open Java Edition</h3><p>Launch Minecraft <strong>Java Edition v1.26.2</strong>. Bedrock is not supported.</p></div>
+      <div class="card reveal"><span class="ico">2️⃣</span><h3>Add Server</h3><p>Paste the IP <strong>slinger400.aternos.me</strong> into Multiplayer → Add Server.</p></div>
+      <div class="card reveal"><span class="ico">3️⃣</span><h3>Connect</h3><p>If it's asleep, wake it via Discord, wait a couple minutes, then join the fight.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCORD / FINAL CTA -->
+<section id="discord" class="final">
+  <h2>JOIN THE COMMUNITY</h2>
+  <p>Hop in the Discord to wake the server, report hackers, and tell us your team so you get your own channel + role.</p>
+  <div class="cta">
+    <a href="https://discord.gg/F6MFPFypY7" target="_blank" rel="noopener" class="btn diamond">💬 JOIN DISCORD</a>
+    <a href="https://www.youtube.com/@Slinger400" target="_blank" rel="noopener" class="btn red">▶ SLINGER'S YOUTUBE</a>
+    <button class="btn gold" onclick="copyIP()">📋 COPY SERVER IP</button>
+  </div>
+  <p style="margin-top:36px;font-size:.85rem">☕ Minecraft <strong>Java Edition</strong> only · v1.26.2 · slinger400.aternos.me</p>
+</section>
+
+<footer>
+  SlingerSMP · Pure Vanilla · Java Edition Only · Griefing allowed (not on my base) · DO NOT DUPE
+  <div style="margin-top:12px;color:#aaa;font-size:.9rem;letter-spacing:1px">Server made by <a href="https://www.youtube.com/@Slinger400" target="_blank" rel="noopener" style="color:#5aae3a;font-weight:900;text-decoration:none">slinger400YT</a> · <a href="https://www.youtube.com/@Slinger400" target="_blank" rel="noopener" style="color:#e0402c;font-weight:900;text-decoration:none">▶ YouTube</a></div>
+</footer>
+
+<div class="watermark">Website made by <span>Yarken</span></div>
+
+<div class="toast" id="toast">IP COPIED ✔</div>
+
+<script>
+  /* ---- clouds ---- */
+  const clouds=document.getElementById('clouds');
+  for(let i=0;i<7;i++){
+    const c=document.createElement('div');
+    c.className='cloud';
+    const s=0.8+Math.random()*1.6;
+    c.style.top=(5+Math.random()*45)+'%';
+    c.style.transform=`scale(${s})`;
+    c.style.animationDuration=(28+Math.random()*40)+'s';
+    c.style.animationDelay=(-Math.random()*40)+'s';
+    c.style.width='40px';c.style.height='22px';
+    clouds.appendChild(c);
+  }
+
+  /* ---- falling voxels ---- */
+  const voxels=document.getElementById('voxels');
+  const cols=['#5aae3a','#7a5230','#8f8f8f','#f7d54a','#48e0d4','#e0402c'];
+  for(let i=0;i<26;i++){
+    const v=document.createElement('div');
+    v.className='vox';
+    v.style.left=Math.random()*100+'vw';
+    v.style.background=cols[Math.floor(Math.random()*cols.length)];
+    const sz=12+Math.random()*20;
+    v.style.width=sz+'px';v.style.height=sz+'px';
+    v.style.animationDuration=(7+Math.random()*11)+'s';
+    v.style.animationDelay=(-Math.random()*11)+'s';
+    voxels.appendChild(v);
+  }
+
+  /* ---- copy IP ---- */
+  function copyIP(){
+    const ip='slinger400.aternos.me';
+    navigator.clipboard?.writeText(ip).catch(()=>{});
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),1500);
+  }
+
+  /* ---- reveal on scroll ---- */
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('show'), (i%5)*70);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
