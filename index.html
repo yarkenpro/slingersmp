@@ -518,7 +518,7 @@
 <section id="commands">
   <div class="wrap" style="text-align:center">
     <h2 class="sec-title reveal">Commands</h2>
-    <p class="sec-sub reveal" style="margin-bottom:26px">Everything you need to move, trade, and manage your team across the void.</p>
+    <p class="sec-sub reveal" style="margin-bottom:26px">Handy teleport and movement commands to get around the void fast.</p>
     <button class="btn reveal" onclick="openCmds()">✦ VIEW COMMANDS</button>
   </div>
 </section>
@@ -538,32 +538,19 @@
 
       <h3 class="cmd-cat">🌀 Teleportation & Movement</h3>
       <div class="cmd-grid">
-        <div class="cmd"><code>/rtp</code><p>Randomly teleports you into the wild across the overworld, nether, or end dimensions.</p></div>
-        <div class="cmd"><code>/home</code><p>Teleports you to your saved personal or team home.</p></div>
-        <div class="cmd"><code>/sethome</code><p>Saves your current location as a respawn or home point.</p></div>
-        <div class="cmd"><code>/tpa &lt;player&gt;</code><p>Sends a request to teleport to another player's location.</p></div>
-        <div class="cmd"><code>/tpahere &lt;player&gt;</code><p>Asks another player to teleport to your location.</p></div>
-        <div class="cmd"><code>/spawn</code><p>Teleports you back to the main server spawn area.</p></div>
-        <div class="cmd"><code>/warp &lt;area&gt;</code><p>Quickly teleports you to specific public server locations.</p></div>
-        <div class="cmd"><code>/afk</code><p>Moves you to the designated AFK zone.</p></div>
+        <div class="cmd"><code>/tpa &lt;player&gt;</code><p>Asks another survival player if they can teleport directly to them.</p></div>
+        <div class="cmd"><code>/tpahere &lt;player&gt;</code><p>Asks another survival player to teleport directly to their location.</p></div>
+        <div class="cmd"><code>/tpaccept</code><p>Accepts an incoming teleport request from a friend.</p></div>
+        <div class="cmd"><code>/tpdeny</code><p>Rejects an unwanted teleport request.</p></div>
+        <div class="cmd"><code>/home set &lt;name&gt;</code><p>Marks your current coordinates as a safe home base.</p></div>
+        <div class="cmd"><code>/home tp &lt;name&gt;</code><p>Teleports back to your designated home base.</p></div>
+        <div class="cmd"><code>/spawn</code><p>Instantly sends you back to the server's world spawn point.</p></div>
+        <div class="cmd"><code>/warp tp &lt;name&gt;</code><p>Lets you travel to public, staff-created server warp destinations (you cannot create warps).</p></div>
       </div>
 
-      <h3 class="cmd-cat">💰 Economy & Trading</h3>
+      <h3 class="cmd-cat">💤 Status</h3>
       <div class="cmd-grid">
-        <div class="cmd"><code>/shop</code><p>Opens the main menu to buy blocks, food, and PVP gear.</p></div>
-        <div class="cmd"><code>/auction</code><p>Opens the auction house interface to view listed items.</p></div>
-        <div class="cmd"><code>/ah sell &lt;price&gt;</code><p>Lists the item currently held in your hand onto the auction house.</p></div>
-        <div class="cmd"><code>/orders</code><p>Places or views custom bounties for items you want other players to deliver.</p></div>
-        <div class="cmd"><code>/pay &lt;player&gt; &lt;amount&gt;</code><p>Transfers money directly to another user.</p></div>
-        <div class="cmd"><code>/bal</code><p>Checks your current financial balance.</p></div>
-        <div class="cmd"><code>/baltop</code><p>Views the richest players on the server leaderboard.</p></div>
-        <div class="cmd"><code>/shardshop</code><p>Opens the premium shard shop menu.</p></div>
-      </div>
-
-      <h3 class="cmd-cat">⚙️ Player & Team</h3>
-      <div class="cmd-grid">
-        <div class="cmd"><code>/settings</code><p>Adjusts your personal server configuration and gameplay preferences.</p></div>
-        <div class="cmd"><code>/team</code><p>Opens the menu to manage your team configurations, invites, and claims.</p></div>
+        <div class="cmd"><code>/afk</code><p>Toggles your status to away from keyboard so others know you're idle.</p></div>
       </div>
 
       <div class="no-results" id="noResults">No commands match your search.</div>
